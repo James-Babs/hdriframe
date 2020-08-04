@@ -33,7 +33,7 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
-				camera.position.set( - 1.8, 0.6, 2.7 );
+				camera.position.set( 10, 0.6, 2.7 );
 
 				scene = new THREE.Scene();
 
@@ -44,8 +44,9 @@
 
 						var envMap = pmremGenerator.fromEquirectangular( texture ).texture;
 
-						// scene.background = envMap;
-						scene.environment = envMap;
+						scene.background = new THREE.Color( 0xeeeeee );
+                        scene.environment = envMap;
+                        scene.fog = new THREE.Fog( 0xC3EDFF, 10, 22 );
 
 						texture.dispose();
 						pmremGenerator.dispose();
